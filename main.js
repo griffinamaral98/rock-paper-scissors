@@ -1,3 +1,6 @@
+let playerScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
 	const num = Math.floor(Math.random() * 3) + 1;
 
@@ -15,29 +18,57 @@ playRound = (playerSelection, computerSelection) => {
 	console.log(computerSelection);
 	playerSelection = prompt("Enter your selection:").toString().toLowerCase();
 
-	if (
-		playerSelection !== "paper" ||
-		playerSelection !== "paper" ||
-		playerSelection !== "paper"
-	) {
-		console.log("Please enter a valid selection");
-	}
+	// if (
+	// 	playerSelection === "paper" ||
+	// 	playerSelection === "rock" ||
+	// 	playerSelection === "scissors"
+	// ) {
+	// 	return;
+	// } else {
+	// 	console.log("Please enter a valid selection");
+	// }
 
 	if (computerSelection === playerSelection) {
-		console.log("It's a tie!");
+		console.log(
+			`It's a tie! \nPlayer Score: ${playerScore} \nComputer Score: ${computerScore}`
+		);
 	} else if (
 		(computerSelection === "rock" && playerSelection === "paper") ||
 		(computerSelection === "scissors" && playerSelection === "rock") ||
 		(computerSelection === "paper" && playerSelection === "scissors")
 	) {
-		console.log("You win!");
+		playerScore++;
+		console.log(
+			`You Win! \nPlayer Score: ${playerScore} \nComputer Score: ${computerScore}`
+		);
 	} else if (
 		(computerSelection === "rock" && playerSelection === "scissors") ||
 		(computerSelection === "scissors" && playerSelection === "paper") ||
 		(computerSelection === "paper" && playerSelection === "rock")
 	) {
-		console.log("You lose!");
+		computerScore++;
+		console.log(
+			`You Lose! \nPlayer Score: ${playerScore} \nComputer Score: ${computerScore}`
+		);
 	}
 };
 
-playRound();
+game = () => {
+	if (playerScore === 5) {
+		console.log(
+			`You Win! \nFinal score: \nPlayer: ${playerScore} \nComputer: ${computerScore}`
+		);
+	} else if (computerScore === 5) {
+		console.log(
+			`You Lose! \nFinal score: \nPlayer Score: ${playerScore} \nComputer Score: ${computerScore}`
+		);
+	} else {
+		playRound();
+	}
+};
+
+game();
+game();
+game();
+game();
+game();
