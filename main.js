@@ -15,6 +15,14 @@ playRound = (playerSelection, computerSelection) => {
 	console.log(computerSelection);
 	playerSelection = prompt("Enter your selection:").toString().toLowerCase();
 
+	if (
+		playerSelection !== "paper" ||
+		playerSelection !== "paper" ||
+		playerSelection !== "paper"
+	) {
+		console.log("Please enter a valid selection");
+	}
+
 	if (computerSelection === playerSelection) {
 		console.log("It's a tie!");
 	} else if (
