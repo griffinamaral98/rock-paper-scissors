@@ -4,8 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock, Paper, Scissors</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="container">
+      <div>
+        <h1>Rock, Paper Scissors</h1>
+        <h2 class="winner-or-loser">
+          Please choose either Rock, Paper, or Scissors
+        </h2>
+        <h2 class="round-winner">First to score 5 points wins</h2>
+        <h2 class="score"></h2>
+      </div>
+      <button class="rock">Rock</button>
+      <button class="paper">Paper</button>
+      <button class="scissors">Scissors</button>
+    </div>
+    <div class="play-again hide">
+      <div class="modal-content">
+        <h2 class="winner"></h2>
+        <h3>Please refresh the page to play again!</h3>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
