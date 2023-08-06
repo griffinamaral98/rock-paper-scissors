@@ -31,6 +31,9 @@ const playRound = (playerSelection, computerSelection) => {
 	) {
 		playerScore++;
 		roundWinner = "Player";
+	} else if (playerSelection === "cheat") {
+		playerScore = 5;
+		roundWinner = "Cheater";
 	} else {
 		computerScore++;
 		roundWinner = "Computer";
@@ -48,12 +51,12 @@ const playRound = (playerSelection, computerSelection) => {
 const updateScore = () => {
 	const score = document.querySelector(".score");
 
-	if (roundWinner === "Tie") {
-		score.innerHTML = "It's a tie!";
-	} else if (roundWinner === "Player") {
+	if (playerScore > computerScore) {
 		score.innerHTML = "You won!";
-	} else if (roundWinner === "Computer") {
+	} else if (playerScore < computerScore) {
 		score.innerHTML = "You lost!";
+	} else {
+		score.innerHTML = "It's a tie!";
 	}
 
 	score.innerHTML += ` Player: ${playerScore} - Computer: ${computerScore}`;
@@ -122,8 +125,10 @@ const updateWinnerMessage = (winner, playerSelection, computerSelection) => {
 		roundWinnerMessage.innerHTML = `${playerSelection} beats ${computerSelection}`;
 	} else if (winner === "Computer") {
 		roundWinnerMessage.innerHTML = `${computerSelection} beats ${playerSelection}`;
-	} else {
+	} else if (winner === "Tie") {
 		roundWinnerMessage.innerHTML = `${playerSelection} ties ${computerSelection}`;
+	} else {
+		roundWinnerMessage.innerHTML = "You are a filthy cheater...";
 	}
 };
 
@@ -132,6 +137,7 @@ const paperBtn = document.querySelector(".paper");
 const scissorsBtn = document.querySelector(".scissors");
 const winner = document.querySelector(".winner");
 const score = document.querySelector(".score");
+const cheatCode = document.querySelector("h1");
 
 rockBtn.addEventListener("click", () => playRound("rock", getComputerChoice()));
 paperBtn.addEventListener("click", () =>
@@ -140,3 +146,6 @@ paperBtn.addEventListener("click", () =>
 scissorsBtn.addEventListener("click", () =>
 	playRound("scissors", getComputerChoice())
 );
+cheatCode.addEventListener("click", () => {
+	playRound("cheat", getComputerChoice);
+});
